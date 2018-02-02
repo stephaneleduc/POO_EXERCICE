@@ -9,16 +9,31 @@ Flight::route('/', function(){
 
 });
 
-Flight::route('POST /inscriptionservice', function(){
+Flight::route('/inscription', function(){
+    
+    Flight::render( "inscription" );
 
-    Flight::request()->query['id']; // $_GET
-    Flight::request()->data["username"]; // $_POST
+});
+
+Flight::route('POST /servicesubscribe', function(){
+
+    $username = Flight::request()->data["username"];
+    $password = Flight::request()->data["password"];
+
+    $user = new User( $username, $password );
+    $user->create();
+
+
+
+});
+
+Flight::route('POST /servicelogin', function(){
+
+    $username = Flight::request()->data["username"];
+    $password = Flight::request()->data["password"];
 
     //Traitement
     
-
-    //Redirect
-    Flight::redirect("/login");
 
 });
 
