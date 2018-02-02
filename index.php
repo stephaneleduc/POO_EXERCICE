@@ -21,7 +21,7 @@ Flight::route('POST /servicesubscribe', function(){
     $password = Flight::request()->data["password"];
 
     $user = new User( $username, $password );
-    $user->create();
+    $status = $user->create();
 
 
 
