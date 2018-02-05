@@ -15,7 +15,7 @@ Flight::route('/', function(){
     }
     Flight::render( "home", [
         "title" => "HomePage"
-    ] );
+    ]);
 
 });
 
@@ -107,7 +107,7 @@ Flight::route('POST /serviceeditnote', function(){
     $form .= "<input type='text' name='title_edit' value='".$note->getNoteTitle()."'>";
     $form .= "<label>Contenu :</label>";
     $form .= "<textarea name='content_edit' style='min-width:200px;max-width:200px;min-height:50px;'>".$note->getNoteContent()."</textarea>";
-    $form .= "<input style='display:none;' type='text' name='id_edit' value='".$note->getNoteId() ."'>";
+    $form .= "<input type='hidden' name='id_edit' value='".$note->getNoteId() ."'>";
     $form .="<input type='submit' value='Modifier'>";
     $form .="</form>";
 

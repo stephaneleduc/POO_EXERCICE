@@ -182,11 +182,11 @@ class Note {
             $test .= "<h5>" . $note->date . "</h5>";
             $test .= "<p>" . $note->content . "</p>";
             $test .= "<form action='serviceeditnote' method='post'>";
-            $test .= "<input style='display:none;' type='text' name='note_edit' value='".$note->id ."'>";
+            $test .= "<input type='hidden' name='note_edit' value='".$note->id ."'>";
             $test .= "<input type='submit' value='Modifier'></form>";
             $test .= "</form><br>";
             $test .= "<form action='serviceremovenote' method='post'>";
-            $test .= "<input style='display:none;' type='text' name='note_remove' value='".$note->id ."'>";
+            $test .= "<input type='hidden' name='note_remove' value='".$note->id ."'>";
             $test .= "<input type='submit' value='Supprimer'></form>";
             $test .= "</form>";
             $test .= "</div>";
