@@ -7,11 +7,22 @@
     <title>Document</title>
 </head>
 <body>
+    <ul>
+        <li>
+            <a href="./">Retour au menu</a>
+        </li>
     
-    <form action="serviceinscription">
+    </ul>
+    
+    <?php
+        if (isset($_GET["error"])) {
+
+            echo "<div>" . $_GET["error"] . "</div>";
+        }
+    ?>
+    <form action="servicesubscribe" method="post">
         <input type="text" name="username" >
-        <input type="text" name="password" >
-        <input type="text" name="password_confirm" >
+        <input type="password" name="password" >
         <input type="submit" value="Inscription">
     </form>
 

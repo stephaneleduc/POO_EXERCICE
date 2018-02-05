@@ -7,6 +7,16 @@
     <title>Document</title>
 </head>
 <body>
-    LOGIN
+    <ul>
+        <li>
+            <a href="./">Retour au menu</a>
+        </li>
+    
+    </ul>
+    <form action="servicelogin" method="post">
+        <input type="text" name="name">
+        <input type="password" name="pass">
+        <input type="submit" value="Connexion">
+    </form>
 </body>
 </html>

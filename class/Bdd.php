@@ -2,7 +2,7 @@
 class Bdd {
 
     // Les constantes sont apellé avec self::
-    const DSN = "mysql:dbname=notes;host=localhost";
+    const DSN = "mysql:dbname=note;host=localhost";
     const USER = "root";
     const PASSWORD = "root";
 

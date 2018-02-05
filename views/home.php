@@ -9,14 +9,15 @@
 <body>
     
     <h1> <?php echo $title; ?> </h1>
+    <ul>
+        <li>
+            <a href="inscription">Inscription</a>
+        </li>
+        <li>
+            <a href="login">Connexion</a>
+        </li>
     
-    <form action="inscriptionservice" method="post">
-        <input type="text">
-        <input type="text">
-        <input type="text">
-        <input type="text">
-        <input type="submit" value="envoyer">
-    </form>
+    </ul>
 
 </body>
 </html>
