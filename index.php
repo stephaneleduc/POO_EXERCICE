@@ -57,7 +57,7 @@ Flight::route('POST /servicelogin', function(){
 
     if ($status["success"] ) {
 
-        Flight::redirect("/note?message=Inscription ok !");
+        Flight::redirect("/note?message=Connexion OK!");
 
     }
 
@@ -67,6 +67,77 @@ Flight::route('POST /servicelogin', function(){
 
     }
     
+
+});
+
+Flight::route('POST /serviceremovenote', function(){
+
+     //Traitement
+     $id = Flight::request()->data["note_remove"];
+
+     $note = new Note();
+     $note->getNote($id);
+
+     $status = $note->removeNote($id);
+ 
+     if ($status["success"]) {
+ 
+         Flight::redirect("/note?message=Note supprimée !");
+ 
+     }
+ 
+     else {
+ 
+         Flight::redirect("/note?error=" . $status["error"][2]);
+ 
+     }
+
+});
+
+Flight::route('POST /serviceeditnote', function(){
+
+    //Traitement
+    $id = Flight::request()->data["note_edit"];
+
+    $note = new Note();
+    $note= $note->getNote($id);
+
+    $form = "<form method='post' action='editnote'>";
+    $form .= "<label>Titre :</label>";
+    $form .= "<input type='text' name='title_edit' value='".$note->getNoteTitle()."'>";
+    $form .= "<label>Contenu :</label>";
+    $form .= "<textarea name='content_edit' style='min-width:200px;max-width:200px;min-height:50px;'>".$note->getNoteContent()."</textarea>";
+    $form .= "<input style='display:none;' type='text' name='id_edit' value='".$note->getNoteId() ."'>";
+    $form .="<input type='submit' value='Modifier'>";
+    $form .="</form>";
+
+    echo $form;
+
+});
+
+Flight::route('/editnote', function(){
+
+    //Traitement
+    $id = Flight::request()->data["id_edit"];
+    $title = Flight::request()->data["title_edit"];
+    $content = Flight::request()->data["content_edit"];
+
+    $note = new Note();
+
+    $status = $note->editNote($id, $title, $content);
+
+
+    if ($status["success"]) {
+
+        Flight::redirect("/note?message=Note modifiée !");
+
+    }
+
+    else {
+
+        Flight::redirect("/note?error=" . $status["error"][2]);
+
+    }
 
 });
 
@@ -81,6 +152,7 @@ Flight::route('/note', function(){
 
     //Affichage
     Flight::render("note");
+
 
 });
 
@@ -115,9 +187,6 @@ Flight::route('/servicecreatenote', function(){
         Flight::redirect("/note?error=" . $status["error"][2]);
 
     }
-
-    //Affichage
-    
 
 });
 

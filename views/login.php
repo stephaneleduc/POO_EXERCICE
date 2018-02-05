@@ -7,6 +7,8 @@
     <title>Document</title>
 </head>
 <body>
+
+    <h1>Connexion :</h1>
     <ul>
         <li>
             <a href="./">Retour au menu</a>
